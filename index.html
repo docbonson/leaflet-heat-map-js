@@ -20,7 +20,7 @@
 
     <script>
       // Sample heatmap data
-      var testData = {
+      let testData = {
         max: 8,
         data: [
           [41.8781, -87.6298, 7], // Chicago, IL
@@ -31,7 +31,7 @@
       }
 
       // Set where map is centered
-      var map = L.map('map').setView([44.0731, -89.4012], 6.5)
+      let map = L.map('map').setView([44.0731, -89.4012], 6.5)
 
       // Add the base map layer (OpenStreetMap) - https://www.openstreetmap.org/#map=5/43.037/-97.559
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -40,7 +40,7 @@
       }).addTo(map)
 
       // Create the heatmap layer with custom color gradient
-      var heat = L.heatLayer(testData.data, {
+      let heat = L.heatLayer(testData.data, {
         radius: 50, // Adjust the radius of the heatmap points
         maxZoom: 10, // Maximum zoom level to display the heatmap
         blur: 25, // Adjust the blur intensity of the heatmap
