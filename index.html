@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaflet Heatmap Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <style>
+      #map {
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      // Sample heatmap data
+      var testData = {
+        max: 8,
+        data: [
+          [41.8781, -87.6298, 7], // Chicago, IL
+          [43.0389, -87.9065, 1], // Milwaukee, WI
+          [44.5192, -88.0198, 5], // Green Bay, WI
+          [43.0731, -89.4012, 3], // Madison, WI
+        ],
+      }
+
+      // Set where map is centered
+      var map = L.map('map').setView([44.0731, -89.4012], 7)
+
+      // Add the base map layer (OpenStreetMap) - https://www.openstreetmap.org/#map=5/43.037/-97.559
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map)
+
+      // Create the heatmap layer with custom color gradient
+      var heat = L.heatLayer(testData.data, {
+        radius: 50, // Adjust the radius of the heatmap points
+        maxZoom: 10, // Maximum zoom level to display the heatmap
+        blur: 25, // Adjust the blur intensity of the heatmap
+        max: 1, // Adjust the maximum intensity value
+        gradient: {
+          0.1: 'blue',
+          0.3: 'yellow',
+          0.9: 'red',
+        },
+      }).addTo(map)
+    </script>
+  </body>
+</html>
