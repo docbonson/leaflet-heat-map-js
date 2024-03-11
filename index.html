@@ -31,7 +31,7 @@
       }
 
       // Set where map is centered
-      let map = L.map('map').setView([44.0731, -89.4012], 6.5)
+      let map = L.map('map').setView([44.0731, -89.4012], 6)
 
       // Add the base map layer (OpenStreetMap) - https://www.openstreetmap.org/#map=5/43.037/-97.559
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -42,7 +42,7 @@
       // Create the heatmap layer with custom color gradient
       let heat = L.heatLayer(testData.data, {
         radius: 50, // Adjust the radius of the heatmap points
-        maxZoom: 10, // Maximum zoom level to display the heatmap
+        maxZoom: 9, // Maximum zoom level to display the heatmap
         blur: 25, // Adjust the blur intensity of the heatmap
         max: 1, // Adjust the maximum intensity value
         gradient: {
